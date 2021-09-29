@@ -29,5 +29,6 @@ public class DetailActivity extends AppCompatActivity {
         Movie movie = Parcels.unwrap(getIntent().getParcelableExtra("movie"));
         tvTitle.setText(movie.getTitle());
         tvOverview.setText(movie.getOverview());
+        ratingBar.setRating(movie.getRating());
     }
 }
