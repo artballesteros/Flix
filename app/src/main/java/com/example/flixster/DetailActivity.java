@@ -13,6 +13,7 @@ import org.parceler.Parcels;
 
 public class DetailActivity extends AppCompatActivity {
 
+    private static final String YOUTUBE_API_KEY = "AIzaSyB4S4jxpck8mk9S9YCmc9KtbOAHHJJWPyM";
     TextView tvTitle;
     TextView tvOverview;
     RatingBar ratingBar;
