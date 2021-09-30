@@ -28,6 +28,7 @@ public class DetailActivity extends YouTubeBaseActivity {
 
     private static final String YOUTUBE_API_KEY = "AIzaSyB4S4jxpck8mk9S9YCmc9KtbOAHHJJWPyM";
     public static final String VIDEO_URL = "https://api.themoviedb.org/3/movie/%d/videos?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed";
+    public static String EXTRA_CONTACT = "101"; // could change
 
     TextView tvTitle;
     TextView tvOverview;

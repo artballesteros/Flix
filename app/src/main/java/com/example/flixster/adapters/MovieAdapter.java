@@ -1,5 +1,6 @@
 package com.example.flixster.adapters;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
@@ -11,10 +12,12 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.core.app.ActivityOptionsCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.flixster.DetailActivity;
+import com.example.flixster.MainActivity;
 import com.example.flixster.R;
 import com.example.flixster.models.Movie;
 
@@ -56,6 +59,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
         public TextView tvTitle;
         public TextView tvOverview;
         public ImageView ivPoster;
+        public String contact;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -84,7 +88,9 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
                     // 2. Navigate to a new activity on click
                     Intent i = new Intent(context, DetailActivity.class);
                     i.putExtra("movie", Parcels.wrap(movie));
-                    context.startActivity(i);
+                    i.putExtra(DetailActivity.EXTRA_CONTACT, contact);
+                    ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation((Activity) context, (View) tvTitle, "titleTransition");
+                    context.startActivity(i, options.toBundle());
                 }
             });
         }
