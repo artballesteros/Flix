@@ -26,6 +26,8 @@ import org.parceler.Parcels;
 
 import java.util.List;
 
+import jp.wasabeef.glide.transformations.RoundedCornersTransformation;
+
 public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> {
 
     Context context;
@@ -80,22 +82,22 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
                 imageUrl = movie.getBackdropPath();
             }
 
-            Glide.with(context).load(imageUrl).into(ivPoster);
+            Glide.with(context).load(imageUrl).transform( new RoundedCornersTransformation(50, 20)).into(ivPoster);
 
             // 1. Register click listener on whole row
-                    container.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    // 2. Navigate to a new activity on click
-                    Intent i = new Intent(context, DetailActivity.class);
-                    i.putExtra("movie", Parcels.wrap(movie));
-                    i.putExtra(DetailActivity.EXTRA_CONTACT, contact);
-                    Pair<View, String> p1 = Pair.create( tvTitle, "titleTransition");
-                    Pair<View, String> p2 = Pair.create( tvOverview, "overviewTransition");
-                    ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation( (Activity) context, p1, p2);
-                    context.startActivity(i, options.toBundle());
-                }
-            });
+                container.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        // 2. Navigate to a new activity on click
+                        Intent i = new Intent(context, DetailActivity.class);
+                        i.putExtra("movie", Parcels.wrap(movie));
+                        i.putExtra(DetailActivity.EXTRA_CONTACT, contact);
+                        Pair<View, String> p1 = Pair.create( tvTitle, "titleTransition");
+                        Pair<View, String> p2 = Pair.create( tvOverview, "overviewTransition");
+                        ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation( (Activity) context, p1, p2);
+                        context.startActivity(i, options.toBundle());
+                    }
+                });
         }
     }
 }
