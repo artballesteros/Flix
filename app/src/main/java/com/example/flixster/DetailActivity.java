@@ -105,7 +105,7 @@ public class DetailActivity extends YouTubeBaseActivity {
 
             @Override
             public void onFailure(int statusCode, Headers headers, String response, Throwable throwable) {
-
+                Log.e("DetailActivity", "Failed to get movie URL", throwable);
             }
         });
     }
