@@ -90,11 +90,10 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
                     Intent i = new Intent(context, DetailActivity.class);
                     i.putExtra("movie", Parcels.wrap(movie));
                     i.putExtra(DetailActivity.EXTRA_CONTACT, contact);
-                    //Pair<View, String> p1 = Pair.create( tvTitle, "titleTransition");
-                    //Pair<View, String> p2 = Pair.create( tvOverview, "overviewTransition");
-                    //ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation( (Activity) context, p1, p2);
-                    context.startActivity(i);
-                    //context.startActivity(i, options.toBundle());
+                    Pair<View, String> p1 = Pair.create( tvTitle, "titleTransition");
+                    Pair<View, String> p2 = Pair.create( tvOverview, "overviewTransition");
+                    ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation( (Activity) context, p1, p2);
+                    context.startActivity(i, options.toBundle());
                 }
             });
         }
