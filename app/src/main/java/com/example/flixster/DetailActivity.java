@@ -3,6 +3,9 @@ package com.example.flixster;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.app.Application;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.RatingBar;
@@ -22,11 +25,13 @@ import org.json.JSONException;
 import org.parceler.Parcel;
 import org.parceler.Parcels;
 
+import javax.annotation.Nullable;
+
 import okhttp3.Headers;
 
 public class DetailActivity extends YouTubeBaseActivity {
 
-    private static final String YOUTUBE_API_KEY = "AIzaSyB4S4jxpck8mk9S9YCmc9KtbOAHHJJWPyM";
+    private static String YOUTUBE_API_KEY;
     public static final String VIDEO_URL = "https://api.themoviedb.org/3/movie/%d/videos?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed";
     public static String EXTRA_CONTACT = "101"; // could change
 
@@ -40,6 +45,17 @@ public class DetailActivity extends YouTubeBaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
+
+        @Nullable ApplicationInfo applicationInfo = null;
+        try {
+            applicationInfo = this.getPackageManager().getApplicationInfo(this.getPackageName(), PackageManager.GET_META_DATA);
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        if (applicationInfo != null) {
+            YOUTUBE_API_KEY = applicationInfo.metaData.getString("com.google.android.youtube.player.KEY");
+        }
 
         tvTitle = findViewById(R.id.tvTitle);
         tvOverview = findViewById(R.id.tvOverview);
@@ -78,7 +94,7 @@ public class DetailActivity extends YouTubeBaseActivity {
 
                     @Override
                     public void onInitializationFailure(YouTubePlayer.Provider provider, YouTubeInitializationResult youTubeInitializationResult) {
-
+                        Log.e("DetailActivity", "Failed to initialize YouTube Videos");
                     }
                 });
             }
