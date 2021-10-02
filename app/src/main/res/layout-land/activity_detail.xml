@@ -16,6 +16,7 @@
 
     <TextView
         android:id="@+id/tvTitle"
+        android:transitionName="titleTransition"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="30sp"
@@ -32,6 +33,7 @@
 
     <TextView
         android:id="@+id/tvOverview"
+        android:transitionName="overviewTransition"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         tools:text="The overview of the movie called The Movie Title. It is about a Movie that has a title. What could this title include. What could this title really be/ Is Movie a Movie or not a Movie. If I watched this movie would I be watching the Movie while watching the movie or is Movie the name of an actual human being. (kinda what is being implied no?) Come watch it to find out!" />
