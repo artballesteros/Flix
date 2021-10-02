@@ -9,8 +9,8 @@
 
     <ImageView
         android:id="@+id/ivPoster"
-        android:layout_width="340dp"
-        android:layout_height="174dp"
+        android:layout_width="338dp"
+        android:layout_height="173dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_marginStart="0dp"
@@ -19,7 +19,6 @@
 
     <TextView
         android:id="@+id/tvTitle"
-        android:transitionName="titleTransition"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
@@ -30,6 +29,7 @@
         android:layout_toEndOf="@+id/ivPoster"
         android:textColor="@color/d_yellow"
         android:textSize="24sp"
+        android:transitionName="titleTransition"
         tools:text="Shang-Chi and the Legend of the Ten Rings" />
 
     <TextView
